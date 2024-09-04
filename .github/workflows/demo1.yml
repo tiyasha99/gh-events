@@ -1,5 +1,6 @@
 name: Events Demo 1
-on: ...
+on: push
+# What if we only want to execute the workflow only on a particular branch?
 jobs:
   deploy:
     runs-on: ubuntu-latest
