@@ -3,8 +3,19 @@ on:
   pull_request:
     types:
       - opened # Activity type when it would be triggered
+    branches:
+      - main
+      - 'dev-*' # * means any characters other than / like dev-test or dev-new
+      - 'feat/**' # ** means any character post slashes like feat/new feat/new/button
   workflow_dispatch:
+  push:
+    branches:
+      - main
+      - 'dev-*' # * means any characters other than / like dev-test or dev-new
+      - 'feat/**' # ** means any character post slashes like feat/new feat/new/button
 # What if we only want to execute the workflow only on a particular branch?
+    paths-ignore: # triggered if a anything is pushed to a certain path or ignored if pushed from  a certain path with ignore-path
+      - '.github/workflows/*'
 jobs:
   deploy:
     runs-on: ubuntu-latest
